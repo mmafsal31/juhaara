@@ -66,7 +66,7 @@ export default function Home() {
 
       <section className="mx-auto max-w-7xl px-4 py-12 md:px-8">
         <SectionTitle title="Best Selling Pieces" action={<Link to="/shop"><Button variant="secondary">View All</Button></Link>} />
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {products.filter((product) => product.isBestSeller).map((product) => <ProductCard key={product.id} product={product} />)}
         </div>
       </section>
