@@ -24,8 +24,12 @@ export default function Home() {
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="relative flex min-h-[520px] max-w-xl flex-col justify-center px-7 md:px-14">
             <h1 className="font-serif text-5xl font-semibold leading-[0.95] text-ink md:text-7xl">Elegance Within Reach</h1>
             <p className="mt-6 max-w-sm text-base text-ink/70 md:text-lg">Premium Anti-Tarnish Jewelry for Every You.</p>
-            <div className="mt-8 flex gap-3">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link to="/shop"><Button>Shop Now</Button></Link>
+              <Link to="/owner" className="inline-flex items-center justify-center gap-2 rounded-2xl border border-mist bg-white/90 px-5 py-3 text-sm font-semibold text-ink transition hover:border-emerald hover:bg-emerald/10">
+                <FiShield className="h-5 w-5 text-emerald" />
+                Owner Dashboard
+              </Link>
             </div>
           </motion.div>
         </div>
