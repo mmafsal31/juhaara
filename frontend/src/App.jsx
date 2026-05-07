@@ -13,8 +13,6 @@ import OwnerDashboard from "./dashboard/OwnerDashboard.jsx";
 import ProductsAdmin from "./dashboard/ProductsAdmin.jsx";
 import OrdersAdmin from "./dashboard/OrdersAdmin.jsx";
 import SettingsAdmin from "./dashboard/SettingsAdmin.jsx";
-import OwnerLogin from "./dashboard/OwnerLogin.jsx";
-import ProtectedOwnerRoute from "./dashboard/ProtectedOwnerRoute.jsx";
 import PageTransition from "./animations/PageTransition.jsx";
 
 function AnimatedRoutes() {
@@ -32,14 +30,11 @@ function AnimatedRoutes() {
           <Route path="/auth" element={<PageTransition><Auth /></PageTransition>} />
           <Route path="/account" element={<PageTransition><UserDashboard /></PageTransition>} />
         </Route>
-        <Route path="/jahaara" element={<PageTransition><OwnerLogin /></PageTransition>} />
-        <Route element={<ProtectedOwnerRoute />}>
-          <Route path="/owner" element={<DashboardLayout />}>
-            <Route index element={<OwnerDashboard />} />
-            <Route path="products" element={<ProductsAdmin />} />
-            <Route path="orders" element={<OrdersAdmin />} />
-            <Route path="settings" element={<SettingsAdmin />} />
-          </Route>
+        <Route path="/owner" element={<DashboardLayout />}>
+          <Route index element={<OwnerDashboard />} />
+          <Route path="products" element={<ProductsAdmin />} />
+          <Route path="orders" element={<OrdersAdmin />} />
+          <Route path="settings" element={<SettingsAdmin />} />
         </Route>
       </Routes>
     </AnimatePresence>
