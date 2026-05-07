@@ -60,17 +60,24 @@ TEMPLATES = [
 
 DB_ENGINE = config("DB_ENGINE", default="postgres")
 if DB_ENGINE == "postgres":
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": config("DB_NAME", default="juhaara"),
-            "USER": config("DB_USER", default="postgres"),
-            "PASSWORD": config("DB_PASSWORD", default="postgres"),
-            "HOST": config("DB_HOST", default="localhost"),
-            "PORT": config("DB_PORT", default="5432"),
-            "CONN_MAX_AGE": 60,
+    if config("DATABASE_URL", default=None):
+        # Railway provides DATABASE_URL
+        import dj_database_url
+        DATABASES = {
+            "default": dj_database_url.config(default=config("DATABASE_URL"))
         }
-    }
+    else:
+        DATABASES = {
+            "default": {
+                "ENGINE": "django.db.backends.postgresql",
+                "NAME": config("DB_NAME", default="juhaara"),
+                "USER": config("DB_USER", default="postgres"),
+                "PASSWORD": config("DB_PASSWORD", default="postgres"),
+                "HOST": config("DB_HOST", default="localhost"),
+                "PORT": config("DB_PORT", default="5432"),
+                "CONN_MAX_AGE": 60,
+            }
+        }
 else:
     DATABASES = {
         "default": {
